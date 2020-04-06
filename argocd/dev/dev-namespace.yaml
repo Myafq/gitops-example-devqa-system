@@ -1,0 +1,17 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dev-namespace
+  namespace: argocd
+spec:
+  destination:
+    namespace: dev
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: dev/namespace
+    repoURL: https://github.com/Myafq/gitops-example-devqa-system.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}

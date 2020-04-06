@@ -1,0 +1,17 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: qa-redis-master
+  namespace: argocd
+spec:
+  destination:
+    namespace: qa
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: qa/redis-master
+    repoURL: https://github.com/Myafq/gitops-example-devqa.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
